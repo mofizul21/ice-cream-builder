@@ -6,7 +6,7 @@ import classes from "./Header.module.css";
 const Header = () => {
   return (
     <header>
-      <div class="container">
+      <div className="container">
         <div>
           <img className={classes.logo} src={logo} alt="Logo" />
         </div>
