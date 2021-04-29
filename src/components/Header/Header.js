@@ -10,7 +10,7 @@ const Header = () => {
         <div>
           <img className={classes.logo} src={logo} alt="Logo" />
         </div>
-        <div className={classes.textRight}>
+        <div className="textRight">
           <img src={reactLogo} alt="React" className={classes.reactLogo} />
           <strong>React</strong>
         </div>
