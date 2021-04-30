@@ -6,18 +6,26 @@ import classes from "./IceCreamBuilder.module.css";
 export default class IceCreamBuilder extends Component {
   state = {
     items: {
-      vanilla: 45,
-      chocolate: 50,
-      lemon: 35,
-      orange: 40,
-      strawberry: 60,
+      // vanilla: 45,
+      // chocolate: 50,
+      // lemon: 35,
+      // orange: 40,
+      // strawberry: 60,
     },
     scoops: [],
     totalPrice: 0,
   };
 
   componentDidMount(){
-    
+    fetch(
+      "https://react-icecream-builder-7e137-default-rtdb.firebaseio.com/items.json")
+      .then((response) => response.json())
+      .then((responseData) => {
+        this.setState({
+          items: responseData
+        });
+      });
+    ;
   };
 
   addScoop = (scoop) => {
@@ -51,7 +59,13 @@ export default class IceCreamBuilder extends Component {
     return (
       <div className={["container", classes.container].join(" ")}>
         <IceCream scoops={scoops} />
-        <Builder items={items} price={totalPrice} add={this.addScoop} remove={this.removeScoop} />
+        <Builder
+          items={items}
+          price={totalPrice}
+          add={this.addScoop}
+          remove={this.removeScoop}
+          scoops={scoops}
+        />
       </div>
     );
   }
